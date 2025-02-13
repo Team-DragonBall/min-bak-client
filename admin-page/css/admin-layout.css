@@ -1,0 +1,383 @@
+/* 기본셋팅 */
+
+@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+:root {
+  --Gluten: 'Gluten', sans-serif;
+  --Jua: 'Jua', sans-serif;
+
+  --darkBG: #21222C;
+  --dark1: #27374d;
+  --dark2: #526d82;
+  --dark3: #9db2bf;
+  --dark4: #dde6ed;
+  --light1: #9aa6b2;
+  --light2: #bcccdc;
+  --light3: #d9eafd;
+  --light4: #f8fafc;
+  --orange1: #ffb319;
+  --orange2: #ffe194;
+  --mint1: #b8dfd8;
+  --mint2: #e8f6ef;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  padding: 10px;
+}
+
+.layout-template {
+  width: 1460px;
+  height: 100%;
+  display: flex;
+}
+
+p, a, h3 {
+  font-family: var(--Jua);
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+
+body * {
+  transition: background 0.5s, color 0.5s, border-color 0.5s, box-shadow 0.5s;
+}
+
+/* 다크모드 */
+
+body.dark {
+  background: var(--darkBG);
+}
+
+body.dark .layout-sidebar,
+body.dark .layout-topbar {
+  background: var(--dark1);
+}
+
+body.dark .layout-sideMenu li.layout-active,
+body.dark .layout-sideMenu li.layout-active a,
+body.dark .layout-sideMenu li.layout-active .layout-menuIcon,
+body.dark .layout-main {
+  background: var(--dark2);
+}
+
+body.dark .layout-menuIcon,
+body.dark .layout-menuText,
+body.dark .layout-sizeBtn,
+body.dark .layout-lightBtn,
+body.dark .layout-alarmBtn,
+body.dark .layout-contentTitle,
+body.dark .layout-topNav li::after {
+  color: var(--dark4);
+}
+
+body.dark .layout-topOption .layout-alarmBtn.messaged::after {
+  border-color: var(--dark1);
+}
+
+body.dark .layout-sideMenu li.layout-active::after {
+	box-shadow: 15px 15px 0 var(--dark2);
+}
+
+body.dark .layout-sideMenu li.layout-active::before {
+	box-shadow: 15px -15px 0 var(--dark2);
+}
+
+body.dark .layout-main .layout-contentTitle::after {
+  box-shadow: -15px -15px 0 var(--dark1);
+}
+
+/* 라이트모드 */
+
+body.light {
+  background: var(--light1);
+}
+
+body.light .layout-sidebar,
+body.light .layout-topbar {
+  background: white;
+}
+
+body.light .layout-sideMenu li.layout-active,
+body.light .layout-sideMenu li.layout-active a,
+body.light .layout-sideMenu li.layout-active .layout-menuIcon,
+body.light .layout-main {
+  background: var(--light3);
+}
+
+body.light .layout-menuIcon,
+body.light .layout-menuText,
+body.light .layout-sizeBtn,
+body.light .layout-lightBtn,
+body.light .layout-alarmBtn,
+body.light .layout-contentTitle,
+body.light .layout-topNav li::after {
+  color: var(--dark1);
+}
+
+body.light .layout-topOption .layout-alarmBtn.messaged::after {
+  border-color: white;
+}
+
+body.light .layout-main .layout-contentTitle::after {
+  box-shadow: -15px -15px 0 white;
+}
+
+/* 사이드바 */
+
+.layout-sidebar {
+  width: 70px;
+  height: 100%;
+  border-radius: 30px 0 0 30px;
+  padding: 10px 0 10px 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.5s;
+}
+
+.layout-sidebar .layout-logoBox {
+  width: 200px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.layout-sidebar .layout-logo span { /* <<⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔임시 */
+  display: block;
+  float: left;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 50px;
+  background: var(--orange1);
+}
+
+.layout-sidebar .layout-logo h1 {
+  float: left;
+  width: 130px;
+  height: 50px;
+  text-align: center;
+  line-height: 55px;
+  font-family: var(--Gluten);
+  font-weight: 500;
+  font-size: 30px;
+  color: var(--orange1);
+}
+
+.layout-sidebar .layout-sideMenu {
+  width: 200px;
+  height: 100%;
+  display: flex;
+  padding-top: 50px;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.layout-sidebar .layout-sideOption {
+  width: 200px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-sidebar .layout-sideMenu li {
+  border-radius: 30px 0 0 30px;
+  position: relative;
+}
+
+.layout-sidebar .layout-sideMenu li a,
+.layout-sidebar .layout-sideOption li a {
+  width: 95%;
+  height: 50px;
+  display: flex;
+  border-radius: 30px;
+  gap: 10px;
+  align-items: center;
+}
+
+.layout-sidebar .layout-menuIcon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 50px;
+  font-size: 20px;
+}
+
+/* 메인 */
+
+.layout-main {
+  flex-grow: 1;
+  border-radius: 0 30px 30px 0;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-main .layout-topbar {
+  width: 100%;
+  height: 70px;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.layout-main .layout-sizeBtn {
+  font-size: 25px;
+  margin-right: 50px;
+  cursor: pointer;
+}
+
+.layout-main .layout-topNav {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.layout-main .layout-topNav li {
+  margin-right: 20px;
+}
+
+.layout-main .layout-topNav li::after {
+  content: ">";
+  font-family: var(--Jua);
+  padding-left: 20px;
+}
+
+.layout-main .layout-topNav li:last-child:after {
+  content: none;
+}
+
+.layout-main .layout-topNav .currPath {
+  font-weight: bold;
+}
+
+.layout-main .layout-topOption {
+  height: 50px;
+  margin-left: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.layout-main .layout-lightBtn {
+  display: flex;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  margin-right: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.layout-main .layout-alarmBtn {
+  display: flex;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  margin-right: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.layout-main .layout-topOption .layout-alarmBtn.messaged::after {
+  content: "4";
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 18px;
+  font-size: 8px;
+  color: white;
+  border: 3px solid;
+  background: tomato;
+}
+
+.layout-main .layout-topOption .layout-userAvatar {
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--dark1);
+  background-color: white;
+}
+
+.layout-main .layout-topOption .layout-userAvatar img {
+  width: 100%;
+  height: 100%;
+}
+
+.layout-main .layout-contentTitle {
+  position: relative;
+  padding: 20px 0 0 20px;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.layout-main .layout-contentTitle::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  top: 0px;
+  left: 0px;
+  z-index: 99;
+}
+
+.layout-main .layout-content {
+  width: calc(100% - 10px);
+  height: 100%;
+  padding-left: 20px;
+  overflow: scroll;
+}
+
+
+.layout-main .layout-content::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.layout-main .layout-content::-webkit-scrollbar-thumb {
+  background: var(--orange1);
+  border-radius: 10px;
+}
+
+.layout-main .layout-content::-webkit-scrollbar-corner {
+  background: none;
+}
